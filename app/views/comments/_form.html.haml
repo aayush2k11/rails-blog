@@ -1,0 +1,15 @@
+=form_for([article, comment], method: :post) do |f|
+  %p
+    = f.label :commenter
+    = f.text_field :commenter
+  %p
+    = f.label :body
+    = f.text_field :body
+  %p
+    = f.submit
+
+:javascript
+    $(document).ready( function() {
+      $('#comment_body').val('');
+      $('#comment_commenter').val('');
+    } );

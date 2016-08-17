@@ -1,0 +1,18 @@
+%html
+%head>
+  %title RailBlog
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+%body
+  %p.notice= notice
+  %p.alert= alert
+  - if user_signed_in?
+    - if current_user.avatar.url(:thumb) != "/avatars/thumb/missing.png"
+      = image_tag(current_user.avatar.url(:thumb))
+  = yield
+  - if user_signed_in?
+    = link_to "Logout", destroy_user_session_path, method: :delete
+    %br
+    = link_to "Accounts Settings", edit_user_registration_path
+    %br
