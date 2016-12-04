@@ -1,6 +1,5 @@
 class LogsController < ApplicationController
   def config_logger
-    # @logger.config_logger(params[:allow_console], params[:severity_level])
     @logger.set_console(params[:allow_console])
     @logger.set_serverity(params[:severity_level])
     render json: {status: "ok"}
